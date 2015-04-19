@@ -3,14 +3,14 @@ osx_image: xcode61
 rvm:
 - 2.1.2
 install:
-- ./Scripts/install.sh
+- "./Scripts/install.sh"
 script:
-- ./Scripts/build.sh
+- "./Scripts/build.sh"
 deploy:
   provider: s3
-  access_key_id: AKIAITEPAI7MBUKSYRMQ
+  access_key_id: AKIAJ2ZYX3LNPAUI5IMQ
   secret_access_key:
-    secure: ki6uIaFaL6dwExiC0HpTa5K2+YP8WNeWbjFSZBTZQub4esPYlmkw8JGsqLGOv+1ics2SaL+ZUxyP0ivRfUO3hzvFPuVb/iLU3tvmBJuGmSz411suvCOkK7OOA5gxrUr9oM0Y3Z/827OVHZmUIB2Plun/KU1PZ94KNPFDQce9yQA=
+    secure: RTrfhug2c1AD8QJ49W9wHaetRi3580QNhfDLQn98jOuaUUGiI/+LkNqhS64HTCT27m05VVykQX+ZFJAJtb6bVTg/GDKXrgmgYJ/P3VWk+qkgkDNBjMgf5hkjaj2aEu+2Dm0udxFky3gjpDC7XvVxhIzUsThxNRW/aBUSK03hd7U=
   bucket: dev.jonathan.porta.codes
   local-dir: Build
   upload-dir: planet-hero
