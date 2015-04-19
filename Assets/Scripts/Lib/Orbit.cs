@@ -17,8 +17,8 @@ public class Orbit {
 	
 	public Vector3 CalculatePosition(){
 		float x = center.x + distance * Mathf.Cos(angle);
-		float y = center.y + distance * Mathf.Sin(angle);
-		return new Vector3(x, y, this.center.z);
+		float z = center.z + distance * Mathf.Sin(angle);
+		return new Vector3(x, this.center.y, z);
 	}
 	
 	public void UpdateAngle(){

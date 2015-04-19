@@ -19,7 +19,7 @@ public class EnemyManager : MonoBehaviour {
 	}
 
 	private void SpawnEnemy(){
-		Vector3 center = new Vector3(100, 100, 0);
-		Instantiate(enemyPrefabs [0], center, Quaternion.identity);
+		Vector3 center = new Vector3(100, 0, 100);
+		GameObject enemy = Instantiate(enemyPrefabs[0], center, Quaternion.identity) as GameObject;
 	}
 }
