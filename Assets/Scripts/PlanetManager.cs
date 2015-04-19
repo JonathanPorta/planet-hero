@@ -9,8 +9,7 @@ public class PlanetManager : MonoBehaviour {
 	private List<GameObject> planets;
 
 	void Awake(){
-		// Register events
-		//EventManager.DestroyPlanet += OnDestroyPlanet;
+
 	}
 
 	void Start(){
@@ -18,6 +17,7 @@ public class PlanetManager : MonoBehaviour {
 		
 		// TODO: Replace this when it's time to add multiple planets
 		GameObject planet = Instantiate(planetPrefabs[0], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+		planet.transform.parent = transform;
 		// Inject ref to the manager instance.
 		planet.GetComponent<PlanetController>().planetManager = this;
 		this.planets.Add(planet);

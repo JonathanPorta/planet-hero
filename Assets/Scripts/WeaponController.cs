@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (LineRenderer))]
-[RequireComponent (typeof (Light))]
+//[RequireComponent (typeof (LineRenderer))]
+//[RequireComponent (typeof (Light))]
 
 public class WeaponController : MonoBehaviour {
 
@@ -48,6 +48,37 @@ public class WeaponController : MonoBehaviour {
 		laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
 	}
 
+	public void Fire(Vector3 direction){
+		if(firing || Time.time < nextFire){ return ; } // No double firing and respect the fire rate.
+		
+		firing = true;
+		lastFire = Time.time;
+		nextFire = Time.time + fireRate;
+
+		RaycastHit hit;
+		Vector3 laserEndPoint;
+
+		// Cast a ray as far as the weapon is effective and see if we hit something
+		if(Physics.Raycast(transform.position, direction, out hit, effectiveRange)){
+			GameObject recipient = hit.transform.gameObject;
+			laserEndPoint = recipient.transform.position;
+
+			HitpointController hitpointController = recipient.GetComponent<HitpointController>();
+			if(hitpointController != null){
+				float damage = ComputeDamage(recipient.transform.position);
+				hitpointController.Damage(damage);
+			}
+			else {
+				Debug.Log("GameObject did not have a HitpointController. Not applying damages.");
+			}
+		}
+		else { // We still need a point to draw our laser, even if we aren't hitting anything.
+  			Ray ray = new Ray(transform.position, direction);
+			laserEndPoint = ray.GetPoint(effectiveRange);
+		}
+		ShowFiringEffects(laserEndPoint);
+	}
+
 	public void Fire(GameObject target){
 		if(firing || Time.time < nextFire){ return ; } // No double firing and respect the fire rate.
 
@@ -55,25 +86,33 @@ public class WeaponController : MonoBehaviour {
 		lastFire = Time.time;
 		nextFire = Time.time + fireRate;
 
-		ShowFiringEffects(target);
-
-		float effectiveness = Vector3.Distance(transform.position, target.transform.position) / effectiveRange;
-		float damage = maximumDamage - scaledDamage * effectiveness;
+		float damage = ComputeDamage(target.transform.position);
 		
-		// The player takes damage.
+		// Damage the target
 		target.GetComponent<HitpointController>().Damage(damage);
+
+		ShowFiringEffects(target.transform.position);
 	}
 
-	private void ShowFiringEffects(GameObject target){
+	private float ComputeDamage(Vector3 target){
+		float distance = Vector3.Distance(transform.position, target);
+		if(distance > effectiveRange) // Weapon is not effective past its effective range
+			return 0.0f;
+		float effectiveness = Mathf.Clamp01((effectiveRange - distance) / effectiveRange);
+		float damage = minimumDamage + scaledDamage * effectiveness;
+		return damage;
+	}
+
+	private void ShowFiringEffects(Vector3 target){
 		// Draw laser line from gun to the target
 		laserShotLine.SetPosition(0, laserShotLine.transform.position);
-		laserShotLine.SetPosition(1, target.transform.position + Vector3.up * 1.5f);
+		laserShotLine.SetPosition(1, target);
 		laserShotLine.enabled = true;
 		
 		// Flash the light
 		laserShotLight.intensity = flashIntensity;
 		
 		// Play the gun shot clip at the position of the muzzle flare.
-		//AudioSource.PlayClipAtPoint(shotClip, laserShotLight.transform.position);
+		AudioSource.PlayClipAtPoint(shotClip, laserShotLight.transform.position);
 	}
 }

@@ -24,7 +24,7 @@ public class EnemyManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update(){
-		if(Input.GetButtonUp("Jump")){
+		if(Input.GetButtonUp("Fire2")){
 			EventManager.TriggerSpawnEnemy();
 		}
 	}
@@ -34,6 +34,7 @@ public class EnemyManager : MonoBehaviour {
 		GameObject enemy = Instantiate(enemyPrefabs[0], spawnPosition, Quaternion.identity) as GameObject;
 		// Inject ref to the manager instance.
 		enemy.GetComponent<EnemyController>().enemyManager = this;
+		enemy.transform.parent = transform;
 		this.enemies.Add(enemy);
 
 		// TODO: Temporary until enemies can find their own targets.
