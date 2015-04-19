@@ -8,8 +8,8 @@ public static class EventManager {
 	public static event GameEvent GameStart, GameOver, SpawnEnemy;
 
 	// In game events due to user interaction
-	public delegate void InterfaceEvent(GameObject target);
-	public static event InterfaceEvent SelectPlanet;
+	public delegate void GameObjectEvent(GameObject target);
+	public static event GameObjectEvent SelectPlanet;
 
 	public static void TriggerGameStart(){
 		if(GameStart != null){
@@ -23,15 +23,15 @@ public static class EventManager {
 		}
 	}
 
-	public static void TriggerSelectPlanet(GameObject selection){
-		if(SelectPlanet != null){
-			SelectPlanet(selection);
-		}
-	}
-
 	public static void TriggerSpawnEnemy(){
 		if(SpawnEnemy != null){
 			SpawnEnemy();
+		}
+	}
+
+	public static void TriggerSelectPlanet(GameObject planet){
+		if(SelectPlanet != null){
+			SelectPlanet(planet);
 		}
 	}
 }

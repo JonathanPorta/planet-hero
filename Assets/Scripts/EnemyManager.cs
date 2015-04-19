@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour {
 	
 	private void Awake(){
 		// Register events
-		EventManager.SpawnEnemy += SpawnEnemy;
+		EventManager.SpawnEnemy += OnSpawnEnemy;
 		// TODO: Don't listen on this. Remove after enemies can target on their own.
 		EventManager.SelectPlanet += SetTarget;
 	}
@@ -29,13 +29,21 @@ public class EnemyManager : MonoBehaviour {
 		}
 	}
 
-	private void SpawnEnemy(){
+	private void OnSpawnEnemy(){
 		Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
 		GameObject enemy = Instantiate(enemyPrefabs[0], spawnPosition, Quaternion.identity) as GameObject;
+		// Inject ref to the manager instance.
+		enemy.GetComponent<EnemyController>().enemyManager = this;
 		this.enemies.Add(enemy);
 
 		// TODO: Temporary until enemies can find their own targets.
 		enemy.GetComponent<EnemyController>().target = currentTarget;
+	}
+	
+	public void DestroyEnemy(GameObject enemy){
+		Debug.Log("EnemyManager.DestroyEnemy()");
+		this.enemies.Remove(enemy);
+		Destroy(enemy);
 	}
 
 	public void SetTarget(GameObject target){ // TODO: Remove after enemies can target on their own.
@@ -44,5 +52,4 @@ public class EnemyManager : MonoBehaviour {
 			e.GetComponent<EnemyController>().target = this.currentTarget; // TODO: Remove after enemies can target on their own.
 		} // TODO: Remove after enemies can target on their own.
 	} // TODO: Remove after enemies can target on their own.
-
 }
