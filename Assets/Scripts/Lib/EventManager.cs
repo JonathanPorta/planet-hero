@@ -5,7 +5,7 @@ public static class EventManager {
 
 	// Events that make the game world go 'round
 	public delegate void GameEvent();	
-	public static event GameEvent GameStart, GameOver;
+	public static event GameEvent GameStart, GameOver, SpawnEnemy;
 
 	// In game events due to user interaction
 	public delegate void InterfaceEvent(GameObject target);
@@ -26,6 +26,12 @@ public static class EventManager {
 	public static void TriggerSelectPlanet(GameObject selection){
 		if(SelectPlanet != null){
 			SelectPlanet(selection);
+		}
+	}
+
+	public static void TriggerSpawnEnemy(){
+		if(SpawnEnemy != null){
+			SpawnEnemy();
 		}
 	}
 }
