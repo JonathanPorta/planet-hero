@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
 	private GameObject character;
 	private GameObject planet;
 	private Orbit orbit;
-	private Vector3 centerOfGravity;
 
 	void Awake(){
 		// Register events
@@ -28,33 +27,33 @@ public class PlayerController : MonoBehaviour {
 		if(Input.GetButton("Jump")){
 			Firing();
 		}
-
+		orbit.center = CalculateCenterOfGravity();
 		orbit.SetAngleInDegrees(orbit.GetAngleInDegrees() + speed * Input.GetAxis("Horizontal"));
 		character.transform.position = orbit.CalculatePosition();
-		character.transform.LookAt(this.centerOfGravity);
+		character.transform.LookAt(CalculateCenterOfGravity());
 	}
 
 	private void Firing(){
-		Vector3 direction = 2.0f * character.transform.position - centerOfGravity;
+		Vector3 direction = 2.0f * character.transform.position - CalculateCenterOfGravity();
 		weaponController.Fire(direction);
 	}
 
 	private void SetPlanet(GameObject selection){
-		// Destroy the current player object because we will instaniate a new one on the new planet
-		if (character != null) {
-			Destroy(character);
-		}
-
 		this.planet = selection;
+		Debug.Log("SETTING NEW PLANET!");
 
 		// Setup orbit based on selected planet
-		this.centerOfGravity = this.planet.transform.position;
 		float orbitHeight = this.planet.GetComponent<SphereCollider>().radius * this.planet.transform.localScale.x + this.characterPrefab.transform.localScale.x;
-		this.orbit = new Orbit(centerOfGravity, orbitHeight, 0.0f, 10.0f);
-
-		// Instantiate the characterPrefab in the given orbit
-		this.character = Instantiate(characterPrefab, orbit.CalculatePosition (), Quaternion.identity) as GameObject;
+		this.orbit = new Orbit(CalculateCenterOfGravity(), orbitHeight, 0.0f, 10.0f);
+		
+		if(character == null){
+			this.character = Instantiate(characterPrefab, orbit.CalculatePosition (), Quaternion.identity) as GameObject;
+		}
 		this.character.transform.parent = transform;
 		this.weaponController = transform.GetComponentInChildren<WeaponController>();
+	}
+
+	private Vector3 CalculateCenterOfGravity(){
+		return this.planet.transform.position;
 	}
 }
