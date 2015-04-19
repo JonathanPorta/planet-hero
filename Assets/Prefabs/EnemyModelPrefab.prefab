@@ -64,7 +64,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 448238}
   m_Layer: 0
-  m_Name: enemy
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,6 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2268bb4ac69aa441da4c6866bac8cf12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyManager: {fileID: 0}
+  hitpointController: {fileID: 0}
   speed: 1
   target: {fileID: 0}
 --- !u!114 &11415708
@@ -421,6 +423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHitpoints: 1000
+  maximumHitpoints: 1000
+  minimumHitpoints: 0
 --- !u!114 &11418030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -439,6 +443,7 @@ MonoBehaviour:
   fadeSpeed: 10
   laserDuration: .300000012
   fireRate: 2
+  effectiveRange: 50
 --- !u!114 &11493242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -457,6 +462,7 @@ MonoBehaviour:
   fadeSpeed: 10
   laserDuration: .150000006
   fireRate: 1
+  effectiveRange: 50
 --- !u!120 &12014270
 LineRenderer:
   m_ObjectHideFlags: 1

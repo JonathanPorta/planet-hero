@@ -585,4 +585,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  characterPrefab: {fileID: 188862, guid: 4a996ac43ff9047b88bbfd74d701bf71, type: 2}
+  characterPrefab: {fileID: 123868, guid: 1a6f99ae311acc94f85ec43ffa9999c8, type: 2}

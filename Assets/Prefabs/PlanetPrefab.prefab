@@ -8,13 +8,15 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499774}
+  - 114: {fileID: 11495372}
+  - 114: {fileID: 11417402}
   - 33: {fileID: 3326402}
   - 135: {fileID: 13507260}
   - 23: {fileID: 2342738}
   - 208: {fileID: 20875876}
   - 135: {fileID: 13518666}
   m_Layer: 0
-  m_Name: Planet
+  m_Name: PlanetPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,6 +65,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195368}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11417402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220d3f048cfc7e744a80a2c0017af754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHitpoints: 1000
+  maximumHitpoints: 1000
+  minimumHitpoints: 0
+--- !u!114 &11495372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f125b5322a59040d685d8d1faea8ba73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetManager: {fileID: 0}
+  hitpointController: {fileID: 0}
 --- !u!135 &13507260
 SphereCollider:
   m_ObjectHideFlags: 1
