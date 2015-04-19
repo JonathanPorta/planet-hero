@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour {
 		EventManager.SelectPlanet += SetPlanet;
 	}
 
+	private void Start(){
+
+	}
+
 	private void Update(){
 		// If we aren't on a planet or don't have a character, bail.
 		if (planet == null || character == null) { return ;}
