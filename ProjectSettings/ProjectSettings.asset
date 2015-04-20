@@ -11,8 +11,8 @@ PlayerSettings:
   targetIOSGraphics: -1
   targetResolution: 0
   accelerometerFrequency: 60
-  companyName: JonthanPorta.com
-  productName: spacegame
+  companyName: https://jonathan.porta.codes
+  productName: planet-hero
   cloudProjectId: 
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -130,7 +130,7 @@ PlayerSettings:
   - width: 320
     height: 180
     banner: {fileID: 0}
-  resolutionDialogBanner: {fileID: 2800000, guid: 04d61af8808e00b46854af23cfffcc65,
+  resolutionDialogBanner: {fileID: 2800000, guid: 6d3362558814ea344b571c78266f1da2,
     type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
