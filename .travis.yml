@@ -6,13 +6,15 @@ install:
 - "./Scripts/install.sh"
 script:
 - "./Scripts/build.sh"
+before_deploy:
+- "./Scripts/package.sh"
 deploy:
   provider: s3
   access_key_id: AKIAJ2ZYX3LNPAUI5IMQ
   secret_access_key:
     secure: RTrfhug2c1AD8QJ49W9wHaetRi3580QNhfDLQn98jOuaUUGiI/+LkNqhS64HTCT27m05VVykQX+ZFJAJtb6bVTg/GDKXrgmgYJ/P3VWk+qkgkDNBjMgf5hkjaj2aEu+2Dm0udxFky3gjpDC7XvVxhIzUsThxNRW/aBUSK03hd7U=
   bucket: dev.jonathan.porta.codes
-  local-dir: Build
+  local-dir: pkg
   upload-dir: planet-hero
   skip_cleanup: true
   acl: public_read
