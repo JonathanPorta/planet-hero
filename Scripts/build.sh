@@ -29,7 +29,7 @@ echo "Attempting to build $project for Linux"
   -silent-crashes \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
-  -buildLinuxUniversalPlayer "$(pwd)/Build/linux" \
+  -buildLinuxUniversalPlayer "$(pwd)/Build/linux/$project" \
   -quit
 
 echo "Attempting to build $project for Web"
@@ -39,7 +39,7 @@ echo "Attempting to build $project for Web"
   -silent-crashes \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
-  -buildWebPlayer "$(pwd)/Build/webplayer" \
+  -buildWebPlayer "$(pwd)/Build/webplayer/" \
   -quit
 
 echo 'Logs from build'
