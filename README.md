@@ -2,7 +2,7 @@
 
 Created, from scratch, in less than 48 hours for Ludum Dare 32.
 
---ALL THE INFOS---> [Ludum Dare Submission][http://ludumdare.com/compo/ludum-dare-32/?action=preview&uid=50740]
+--ALL THE INFOS---> [Ludum Dare Submission](http://ludumdare.com/compo/ludum-dare-32/?action=preview&uid=50740)
 
 Planet Hero is my second Unity3D game, well, second game ever. Your goal is to jump from planet to planet while fighting off an onslaught of rectangle with frickin' laser beams. 
 
