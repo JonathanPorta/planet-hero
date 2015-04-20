@@ -1,5 +1,7 @@
 ## Planet Hereo [![Build Status](https://travis-ci.org/JonathanPorta/planet-hero.svg)](https://travis-ci.org/JonathanPorta/planet-hero)
 
+![[Banner](http://i.imgur.com/IeEkZiR.png)](http://i.imgur.com/IeEkZiR.png)
+
 Created, from scratch, in less than 48 hours for Ludum Dare 32.
 
 --ALL THE INFOS---> [Ludum Dare Submission](http://ludumdare.com/compo/ludum-dare-32/?action=preview&uid=50740)
