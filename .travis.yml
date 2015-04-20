@@ -20,3 +20,6 @@ deploy:
   acl: public_read
   on:
     repo: JonathanPorta/planet-hero
+notifications:
+  slack:
+    secure: QB8MA4SacK9JFNwGPKky/xUhDYXhxZpelfO1u/bhaoBfRVvaC+diUnCQGEs9B6cMTym8eyPUyJNlomrAkfUyFpeeQWh2lJgoFOzdgMKkoDFicgCWUdp3evtN53x5NfIwpP9D4dlneWYyib4ttLgVZllb48Zh7ulgABVyAtxv/vQ=
