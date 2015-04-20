@@ -4,8 +4,7 @@ using System.Collections;
 public class Planet : Gridable {
 	public GameObject prefab;
 	public Orbit orbit = null;
-
-	private GameObject gameObject = null;
+	public GameObject gameObject = null;
 	
 	public Planet(GameObject prefab){
 		this.prefab = prefab;
@@ -60,16 +59,8 @@ public class Planet : Gridable {
 				lineRenderer.SetPosition(i, new Vector3(x, y, z));
 				currentAngle += degreesPerSegment;
 			}
+			// We don't want things bumping into our orbit lines. They're just for decoration, bro!
+			//lineRenderer.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 		}
-	}
-
-	public GameObject Draw(){
-		if(this.gameObject != null) {
-			this.gameObject.transform.position = this.orbit.CalculatePosition();
-		}
-		else {
-			this.gameObject = MonoBehaviour.Instantiate(this.prefab, this.orbit.CalculatePosition(), Quaternion.identity) as GameObject;
-		}
-		return this.gameObject;
 	}
 }

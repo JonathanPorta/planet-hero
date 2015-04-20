@@ -9,24 +9,27 @@ public class PlanetManager : MonoBehaviour {
 	private List<GameObject> planets;
 
 	void Awake(){
-
+		this.planets = new List<GameObject>();
 	}
 
 	void Start(){
-		this.planets = new List<GameObject>();
-		
-		// TODO: Replace this when it's time to add multiple planets
-		GameObject planet = Instantiate(planetPrefabs[0], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-		planet.transform.parent = transform;
-		// Inject ref to the manager instance.
-		planet.GetComponent<PlanetController>().planetManager = this;
-		this.planets.Add(planet);
+		GameObject planet = CreatePlanet(planetPrefabs[0], new Vector3(0, 0, 0));
 		EventManager.TriggerSelectPlanet(planet);
 	}
 	
 	// Update is called once per frame
 	void Update(){
 	
+	}
+
+	public GameObject CreatePlanet(GameObject prefab, Vector3 position){
+		// TODO: Replace this when it's time to add multiple planets
+		GameObject planet = Instantiate(prefab, position, Quaternion.identity) as GameObject;
+		planet.transform.parent = transform;
+		// Inject ref to the manager instance.
+		planet.GetComponent<PlanetController>().planetManager = this;
+		this.planets.Add(planet);
+		return planet;
 	}
 
 	public void DestroyPlanet(GameObject planet){

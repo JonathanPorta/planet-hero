@@ -18,10 +18,7 @@ public class CameraZoom : MonoBehaviour {
 		moveDirection = new Vector3(0, 0, Input.GetAxis("Mouse ScrollWheel"));
 		moveDirection *= zoomSpeed;
 
-		if(Input.GetAxis("Mouse ScrollWheel") > 0){
-			transform.Translate(moveDirection, Space.Self);
-		}
-		else if(Input.GetAxis("Mouse ScrollWheel") < 0){
+		if(Input.GetAxis("Mouse ScrollWheel") != 0){
 			transform.Translate(moveDirection, Space.Self);
 		}
 	}

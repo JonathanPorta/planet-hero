@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour {
 	public float maximumDamage = 120f;
 	public float minimumDamage = 45f;
 	public AudioClip shotClip;
-	public float flashIntensity = 3f;
+	public float flashIntensity = 10f;
 	public float fadeSpeed = 10f;
 	public float laserDuration = 0.25f;
 	public float fireRate = 0.5f;

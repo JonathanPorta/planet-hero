@@ -30,12 +30,17 @@ public class SystemManager {
     this.planets.Add(planet);
   }
 
-  public void Draw(){
+  public void Draw(PlanetManager planetManager){
     Planet[] planetsArray = this.planets.ToArray();
     for(int i=0; i<planetsArray.Length; i++){
       Planet planet = planetsArray[i];
-      planet.orbit.UpdateAngle();
-      planet.Draw();
+	  if(planet.gameObject != null){
+		planet.orbit.UpdateAngle();
+		planet.gameObject.transform.position = planet.orbit.CalculatePosition();
+	  }
+	  else {
+	    planet.gameObject = planetManager.CreatePlanet(planet.prefab, planet.orbit.CalculatePosition());
+	  }
     }
   }
 
@@ -43,7 +48,7 @@ public class SystemManager {
     Planet[] planetsArray = this.planets.ToArray();
     for(int i=0; i<planetsArray.Length; i++){
       Planet planet = planetsArray[i];
-      planet.Draw();
+      //planet.Draw();
       planet.DrawOrbit();
     }
   }
@@ -94,15 +99,18 @@ public class SystemLayout {
 public class SystemGenerator : MonoBehaviour {
   public GameObject[] prefabs;
   public int planetCount = 10;
-
+  public GameObject planetManagerGameObject;
   public float minimumSeparationDistance = 100.0f;
   public float maximumSeparationDistance = 300.0f;
   public float minimumOrbitalVelocity = 1.0f;
   public float maximumOrbitalVelocity = 10.0f;
 	
   private SystemManager systemManager;
-  private GameObject go;
+  private PlanetManager planetManager;
 
+  void Awake(){
+    this.planetManager = planetManagerGameObject.GetComponent<PlanetManager>();
+  }
   // Use this for initialization
   void Start(){
     SystemLayout layout = new SystemLayout(minimumSeparationDistance, maximumSeparationDistance, minimumOrbitalVelocity, maximumOrbitalVelocity);
@@ -113,13 +121,13 @@ public class SystemGenerator : MonoBehaviour {
       Planet planet = new Planet(prefab);
       systemManager.AddPlanet(planet);
     }
-
+	systemManager.Draw(planetManager);
     // Only draw these once...or else.
     systemManager.DrawOrbits();
   }
 
   // Update is called once per frame
   void Update(){
-    systemManager.Draw();
+    systemManager.Draw(planetManager);
   }
 }
