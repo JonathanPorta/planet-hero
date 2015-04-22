@@ -5,7 +5,7 @@ rvm:
 install:
 - "travis_wait ./Scripts/install.sh"
 script:
-- "travis_wait foreman start"
+- "foreman start"
 before_deploy:
 - "./Scripts/package.sh"
 deploy:
