@@ -5,7 +5,7 @@ rvm:
 install:
 - "./Scripts/install.sh"
 script:
-- "./Scripts/build.sh"
+- "travis_wait ./Scripts/build.sh"
 before_deploy:
 - "./Scripts/package.sh"
 deploy:
