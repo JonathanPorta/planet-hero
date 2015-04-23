@@ -6,9 +6,10 @@ public class EnemyManager : MonoBehaviour {
 
 	public GameObject[] enemyPrefabs;
 	public GameObject[] spawnPoints;
+	public float spawnRate = 0.1f; // Number of enemies to spawn per second.
 
 	private List<GameObject> enemies;
-
+  private float lastSpawnTime;
 	private GameObject currentTarget; // TODO: Remove after enemies can target on their own.
 	
 	private void Awake(){
@@ -24,6 +25,11 @@ public class EnemyManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update(){
+		int enemiesToSpawn = Mathf.FloorToInt((Time.time - lastSpawnTime) * spawnRate);
+    for(int i = 0; i< enemiesToSpawn; i++){
+      lastSpawnTime = Time.time;
+      EventManager.TriggerSpawnEnemy();
+    }
 		if(Input.GetButtonUp("Fire2")){
 			EventManager.TriggerSpawnEnemy();
 		}
