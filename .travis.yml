@@ -6,7 +6,7 @@ install:
 - "gem install foreman"
 - "travis_wait ./Scripts/install.sh"
 script:
-- "foreman start"
+- "travis_wait foreman start"
 before_deploy:
 - "./Scripts/package.sh"
 deploy:
