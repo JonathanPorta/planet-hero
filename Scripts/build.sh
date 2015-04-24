@@ -41,6 +41,3 @@ echo "Attempting to build $project for Web"
   -projectPath $(pwd) \
   -buildWebPlayer "$(pwd)/Build/webplayer/" \
   -quit
-
-echo 'Logs from build'
-cat $(pwd)/unity.log
