@@ -66,7 +66,7 @@ public class EnemyController : MonoBehaviour {
 		nav.Stop();
 		transform.LookAt(target.transform.position);
 		foreach(WeaponController weapon in weapons){
-			weapon.Fire(target);
+			weapon.Fire();
 		}
 	}
 

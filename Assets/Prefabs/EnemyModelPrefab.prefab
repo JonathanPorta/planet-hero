@@ -27,7 +27,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 427686}
   - 108: {fileID: 10899832}
-  - 120: {fileID: 12036492}
   m_Layer: 0
   m_Name: fxLaser
   m_TagString: Untagged
@@ -114,7 +113,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 482578}
   - 108: {fileID: 10864656}
-  - 120: {fileID: 12014270}
   m_Layer: 0
   m_Name: fxLaser
   m_TagString: Untagged
@@ -360,7 +358,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
@@ -392,7 +390,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
@@ -441,9 +439,10 @@ MonoBehaviour:
   shotClip: {fileID: 8300000, guid: 0fb800adf68918b48bd1ab5f7638c1ff, type: 3}
   flashIntensity: 3
   fadeSpeed: 10
-  laserDuration: .300000012
   fireRate: 2
   effectiveRange: 50
+  laserBoltPrefab: {fileID: 135140, guid: ad59f5380a6344541b6551dfd1c8ceb7, type: 2}
+  laserBoltMaterial: {fileID: 2100000, guid: 8f12b29bad7e4494aa37e79eecae3ddd, type: 2}
 --- !u!114 &11493242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -460,83 +459,10 @@ MonoBehaviour:
   shotClip: {fileID: 8300000, guid: 0fb800adf68918b48bd1ab5f7638c1ff, type: 3}
   flashIntensity: 3
   fadeSpeed: 10
-  laserDuration: .150000006
   fireRate: 1
   effectiveRange: 50
---- !u!120 &12014270
-LineRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195248}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 8f12b29bad7e4494aa37e79eecae3ddd, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    startWidth: .0500000007
-    endWidth: .0250000004
-    m_StartColor:
-      serializedVersion: 2
-      rgba: 4294967295
-    m_EndColor:
-      serializedVersion: 2
-      rgba: 4294967295
-  m_UseWorldSpace: 1
---- !u!120 &12036492
-LineRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143424}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 8f12b29bad7e4494aa37e79eecae3ddd, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    startWidth: .0500000007
-    endWidth: .0250000004
-    m_StartColor:
-      serializedVersion: 2
-      rgba: 4294967295
-    m_EndColor:
-      serializedVersion: 2
-      rgba: 4294967295
-  m_UseWorldSpace: 1
+  laserBoltPrefab: {fileID: 135140, guid: ad59f5380a6344541b6551dfd1c8ceb7, type: 2}
+  laserBoltMaterial: {fileID: 2100000, guid: 8f12b29bad7e4494aa37e79eecae3ddd, type: 2}
 --- !u!195 &19521398
 NavMeshAgent:
   m_ObjectHideFlags: 1

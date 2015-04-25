@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 496446}
   - 108: {fileID: 10849624}
-  - 120: {fileID: 12016300}
   m_Layer: 0
   m_Name: fxLaser
   m_TagString: Untagged
@@ -236,7 +235,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
@@ -256,46 +255,10 @@ MonoBehaviour:
   shotClip: {fileID: 8300000, guid: 0fb800adf68918b48bd1ab5f7638c1ff, type: 3}
   flashIntensity: 3
   fadeSpeed: 10
-  laserDuration: .25
-  fireRate: .5
+  fireRate: .100000001
   effectiveRange: 50
---- !u!120 &12016300
-LineRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 168320}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: fb85f415989908540bf7f60254edc55e, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    startWidth: .300000012
-    endWidth: .100000001
-    m_StartColor:
-      serializedVersion: 2
-      rgba: 4278190335
-    m_EndColor:
-      serializedVersion: 2
-      rgba: 4278190335
-  m_UseWorldSpace: 1
+  laserBoltPrefab: {fileID: 135140, guid: ad59f5380a6344541b6551dfd1c8ceb7, type: 2}
+  laserBoltMaterial: {fileID: 2100000, guid: fb85f415989908540bf7f60254edc55e, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

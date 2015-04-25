@@ -35,9 +35,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void Firing(){
-		Vector3 direction = (2.0f * transform.position - playerOrbit.center);
-		Debug.DrawRay(transform.position, direction);
-		weaponController.Fire(direction);
+		weaponController.Fire();
 	}
 
 	private void SetPlanet(GameObject selection){
