@@ -21,8 +21,17 @@ public class LaserBolt : MonoBehaviour {
 		transform.Translate(Vector3.forward * Time.deltaTime * 100.0f);
 	}
 
-  void OnCollisionEnter(){
+  void OnTriggerEnter(){
+		Debug.Log("LaserBolt COLLISION ENTER");
     Destruct();
+  }
+
+	void OnTriggerStay(){
+		Debug.Log("LaserBolt COLLISION STAY");
+	}
+
+  void OnTriggerExit(){
+    Debug.Log("LaserBolt COLLISION EXIT");
   }
 
   private void Destruct(bool collision = false){
