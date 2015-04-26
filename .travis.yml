@@ -11,8 +11,6 @@ install:
 - "travis_wait ./Scripts/install.sh"
 script:
 - "./Scripts/build.sh"
-before_deploy:
-- "./Scripts/package.sh"
 deploy:
   provider: s3
   access_key_id: AKIAJ2ZYX3LNPAUI5IMQ
