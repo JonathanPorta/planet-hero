@@ -2,10 +2,15 @@ language: objective-c
 osx_image: xcode61
 rvm:
 - 2.1.2
+env:
+- TARGET=linux
+- TARGET=osx
+- TARGET=windows
+- TARGET=webplayer
 install:
 - "travis_wait ./Scripts/install.sh"
 script:
-- "./Scripts/wrapper.sh"
+- "./Scripts/build.sh"
 before_deploy:
 - "./Scripts/package.sh"
 deploy:
@@ -14,11 +19,12 @@ deploy:
   secret_access_key:
     secure: RTrfhug2c1AD8QJ49W9wHaetRi3580QNhfDLQn98jOuaUUGiI/+LkNqhS64HTCT27m05VVykQX+ZFJAJtb6bVTg/GDKXrgmgYJ/P3VWk+qkgkDNBjMgf5hkjaj2aEu+2Dm0udxFky3gjpDC7XvVxhIzUsThxNRW/aBUSK03hd7U=
   bucket: dev.jonathan.porta.codes
-  local-dir: pkg
+  local-dir: Release
   upload-dir: planet-hero
   skip_cleanup: true
   acl: public_read
   on:
+    branch: master
     repo: JonathanPorta/planet-hero
 notifications:
   slack:
